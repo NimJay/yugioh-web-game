@@ -1,7 +1,14 @@
+/*
+To run this script, run:
+1. npm install
+2. node download-card-images.js
+*/
+
 const fs = require('fs');
 const https = require('https');
 const { getCardsBefore2008 } = require('./get-cards-from-csv');
 
+// Whichever folder you download into, that folder needs to already exist
 const FOLDER_TO_SAVE_IMAGES = `../preact-app/src/assets/cards/`;
 const MIN_CARD_INDEX = 0;
 const MAX_CARD_INDEX = 3050; // There's only about 3044 cards before 2008 anyway
