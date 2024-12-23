@@ -1,0 +1,5 @@
+# Node.js (JavaScript) dependencies
+node_modules
+
+# macOS folder metadata file
+.DS_Store
