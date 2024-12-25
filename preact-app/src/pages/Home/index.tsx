@@ -2,7 +2,7 @@ import './style.css';
 
 function Home() {
 	return (
-		<div>
+		<div className="HomePage">
 			<section>
         <a href="/duel">Duel</a>
         <a href="/my-deck">My deck</a>

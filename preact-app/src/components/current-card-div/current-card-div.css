@@ -1,0 +1,20 @@
+.CurrentCardDiv {
+  padding: 15px;
+  background-color: #3F137C;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.CurrentCardDiv img {
+  width: 80%;
+  max-width: 400px;
+}
+
+.CurrentCardDivImageDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.CurrentCardDiv div {
+  margin-top: 20px;
+}
