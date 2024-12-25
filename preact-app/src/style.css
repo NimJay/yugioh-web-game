@@ -1,6 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Space Grotesk", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  color: white;
+  background-color: #240B46;
+  margin: 0;
+}
+
+a {
+  color: #87B5FF;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #B5D1FF;
 }
