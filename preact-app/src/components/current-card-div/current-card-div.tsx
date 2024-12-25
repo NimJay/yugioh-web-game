@@ -17,6 +17,10 @@ function CurrentCardDiv (props: CurrentCardDivProps) {
       </div>
       <div>{card.name}</div>
       <div>{card.description}</div>
+      <div className={`CurrentCardDivAttackAndDefenseDiv`}>
+        <span>{card.attack && `ATK/ ${card.attack}`}</span>
+        <span>{card.defense && ` DEF/ ${card.defense}`}</span>
+      </div>
     </div>
   );
 }

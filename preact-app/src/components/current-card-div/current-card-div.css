@@ -18,3 +18,7 @@
 .CurrentCardDiv div {
   margin-top: 20px;
 }
+
+.CurrentCardDivAttackAndDefenseDiv span {
+  margin-right: 20px;
+}
