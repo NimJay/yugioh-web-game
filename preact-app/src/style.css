@@ -20,3 +20,9 @@ a {
 a:visited {
   color: #B5D1FF;
 }
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
