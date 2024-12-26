@@ -4,10 +4,7 @@ import { Pack } from './pack';
 // Do not modify it directly.
 export const packs: Pack[] = [
   {
-    "name": [
-      "Legend of",
-      "Blue Eyes White Dragon"
-    ],
+    "name": "Legend of Blue Eyes White Dragon",
     "releaseYear": 2002,
     "numOfCards": 9,
     "commonCardIds": [
@@ -148,9 +145,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Metal Raiders"
-    ],
+    "name": "Metal Raiders",
     "releaseYear": 2002,
     "numOfCards": 9,
     "commonCardIds": [
@@ -309,9 +304,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Spell Ruler"
-    ],
+    "name": "Spell Ruler",
     "releaseYear": 2002,
     "numOfCards": 9,
     "commonCardIds": [
@@ -430,9 +423,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Pharaoh's Servant"
-    ],
+    "name": "Pharaoh's Servant",
     "releaseYear": 2002,
     "numOfCards": 9,
     "commonCardIds": [
@@ -552,9 +543,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Labyrinth of Nightmare"
-    ],
+    "name": "Labyrinth of Nightmare",
     "releaseYear": 2003,
     "numOfCards": 9,
     "commonCardIds": [
@@ -674,9 +663,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Legacy of Darkness"
-    ],
+    "name": "Legacy of Darkness",
     "releaseYear": 2003,
     "numOfCards": 9,
     "commonCardIds": [
@@ -792,9 +779,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Pharaonic Guardian"
-    ],
+    "name": "Pharaonic Guardian",
     "releaseYear": 2003,
     "numOfCards": 9,
     "commonCardIds": [
@@ -917,9 +902,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Magician's Force"
-    ],
+    "name": "Magician's Force",
     "releaseYear": 2003,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1042,9 +1025,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Dark Crisis"
-    ],
+    "name": "Dark Crisis",
     "releaseYear": 2003,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1165,9 +1146,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Invasion of Chaos"
-    ],
+    "name": "Invasion of Chaos",
     "releaseYear": 2004,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1294,9 +1273,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Ancient Sanctuary"
-    ],
+    "name": "Ancient Sanctuary",
     "releaseYear": 2004,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1423,9 +1400,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Soul of the Duelist"
-    ],
+    "name": "Soul of the Duelist",
     "releaseYear": 2004,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1498,9 +1473,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Rise of Destiny"
-    ],
+    "name": "Rise of Destiny",
     "releaseYear": 2004,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1573,9 +1546,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Flaming Eternity"
-    ],
+    "name": "Flaming Eternity",
     "releaseYear": 2005,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1648,9 +1619,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "The Lost Millennium"
-    ],
+    "name": "The Lost Millennium",
     "releaseYear": 2005,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1723,9 +1692,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Cybernetic Revolution"
-    ],
+    "name": "Cybernetic Revolution",
     "releaseYear": 2005,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1798,9 +1765,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Elemental Energy"
-    ],
+    "name": "Elemental Energy",
     "releaseYear": 2005,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1873,9 +1838,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Shadow of Infinity"
-    ],
+    "name": "Shadow of Infinity",
     "releaseYear": 2006,
     "numOfCards": 9,
     "commonCardIds": [
@@ -1948,9 +1911,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Enemy of Justice"
-    ],
+    "name": "Enemy of Justice",
     "releaseYear": 2006,
     "numOfCards": 9,
     "commonCardIds": [
@@ -2023,9 +1984,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Power of the Duelist"
-    ],
+    "name": "Power of the Duelist",
     "releaseYear": 2006,
     "numOfCards": 9,
     "commonCardIds": [
@@ -2098,9 +2057,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Cyberdark Impact"
-    ],
+    "name": "Cyberdark Impact",
     "releaseYear": 2006,
     "numOfCards": 9,
     "commonCardIds": [
@@ -2173,9 +2130,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Strike of Neos"
-    ],
+    "name": "Strike of Neos",
     "releaseYear": 2007,
     "numOfCards": 9,
     "commonCardIds": [
@@ -2259,9 +2214,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Force of the Breaker"
-    ],
+    "name": "Force of the Breaker",
     "releaseYear": 2007,
     "numOfCards": 9,
     "commonCardIds": [
@@ -2345,9 +2298,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Tactical Evolution"
-    ],
+    "name": "Tactical Evolution",
     "releaseYear": 2007,
     "numOfCards": 9,
     "commonCardIds": [
@@ -2452,9 +2403,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Gladiator's Assault"
-    ],
+    "name": "Gladiator's Assault",
     "releaseYear": 2007,
     "numOfCards": 9,
     "commonCardIds": [
@@ -2564,9 +2513,7 @@ export const packs: Pack[] = [
     ]
   },
   {
-    "name": [
-      "Good Ol' Days"
-    ],
+    "name": "Good Ol' Days",
     "releaseYear": 2006,
     "numOfCards": 5,
     "commonCardIds": [

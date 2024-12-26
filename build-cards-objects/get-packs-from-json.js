@@ -10,7 +10,7 @@ function getPacksFromJson() {
   // where keys looks like "LOB".
   for (const [_, rawPack] of Object.entries(rawPacks)) {
     const pack = {
-      name: rawPack.name,
+      name: rawPack['name'].join(' '),
       releaseYear: parseInt(rawPack['release']),
       numOfCards: rawPack['#cards'],
       commonCardIds: rawPack.Common,
