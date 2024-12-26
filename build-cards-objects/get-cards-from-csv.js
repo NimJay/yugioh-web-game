@@ -36,7 +36,6 @@ function getCardsBeforeYear(callback, releaseYearMax) {
     .pipe(csv())
     .on('data', (row) => {
       const releaseDate = row.ocg_date || row.tcg_date;
-      // Synchro cards were released in 2008 🤮
       if (isBeforeYear(releaseDate, releaseYearMax)) {
         cards.push(csvRowToCard(row));
       }
@@ -50,6 +49,7 @@ function getCardsBeforeYear(callback, releaseYearMax) {
     });
 }
 
+// Synchro cards were released in 2008 🤮
 function getCardsBefore2008(callback) {
   getCardsBeforeYear(callback, 2008);
 }
