@@ -1,13 +1,12 @@
 import { render } from 'preact';
 import { LocationProvider, Router, Route } from 'preact-iso';
 
-import { Header } from './components/Header.jsx';
-import { AllCards } from './pages/AllCards/index.jsx';
-import { Duel } from './pages/Duel/index.jsx';
-import { Home } from './pages/Home/index.jsx';
-import { MyDeck } from './pages/MyDeck/index.jsx';
-import { Store } from './pages/Store/index.jsx';
-import { NotFound } from './pages/_404.jsx';
+import { AllCardsPage } from './pages/all-cards-page/all-cards-page.js';
+import { DuelPage } from './pages/duel-page/duel-page.js';
+import { HomePage } from './pages/home-page/home-page.js';
+import { MyDeckPage } from './pages/my-deck-page/my-deck-page.js';
+import { StorePage } from './pages/store-page/store-page.js';
+import { NotFoundPage } from './pages/_404.jsx';
 import './style.css';
 
 export function App() {
@@ -15,12 +14,12 @@ export function App() {
 		<LocationProvider>
 			<main>
 				<Router>
-          <Route path="/" component={Home} />
-          <Route path="/all-cards" component={AllCards} />
-          <Route path="/duel" component={Duel} />
-          <Route path="/my-deck" component={MyDeck} />
-          <Route path="/store" component={Store} />
-					<Route default component={NotFound} />
+          <Route path="/" component={HomePage} />
+          <Route path="/all-cards" component={AllCardsPage} />
+          <Route path="/duel" component={DuelPage} />
+          <Route path="/my-deck" component={MyDeckPage} />
+          <Route path="/store" component={StorePage} />
+					<Route default component={NotFoundPage} />
 				</Router>
 			</main>
 		</LocationProvider>

@@ -1,6 +1,6 @@
-import './style.css';
+import './home-page.css';
 
-function Home() {
+function HomePage() {
 	return (
 		<div className="HomePage">
 			<section>
@@ -13,4 +13,4 @@ function Home() {
 	);
 }
 
-export { Home };
+export { HomePage };

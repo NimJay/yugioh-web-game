@@ -3,7 +3,7 @@ import { AllCardsDiv } from "../../components/all-cards-div/all-cards-div";
 import { CurrentCardDiv } from "../../components/current-card-div/current-card-div";
 import "./all-cards-page.css";
 
-function AllCards() {
+function AllCardsPage() {
   const [currentCard, setCurrentCard] = useState(null);
 	return (
     <div className={`AllCardsPage`}>
@@ -18,4 +18,4 @@ function AllCards() {
   );
 }
 
-export { AllCards };
+export { AllCardsPage };
