@@ -13,11 +13,11 @@ function getPacksFromJson() {
       name: rawPack['name'].join(' '),
       releaseYear: parseInt(rawPack['release']),
       numOfCards: rawPack['#cards'],
-      commonCardIds: rawPack.Common,
-      rareCardIds: rawPack.Rare,
-      superRareCardIds: rawPack['Super Rare'],
-      ultraRareCardIds: rawPack['Ultra Rare'],
-      secretRareCardIds: rawPack['Secret Rare'],
+      commonCardIds: rawPack.Common || [],
+      rareCardIds: rawPack.Rare || [],
+      superRareCardIds: rawPack['Super Rare'] || [],
+      ultraRareCardIds: rawPack['Ultra Rare'] || [],
+      secretRareCardIds: rawPack['Secret Rare'] || [],
     }
     packs.push(pack);
   }

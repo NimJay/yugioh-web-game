@@ -1470,7 +1470,8 @@ export const packs: Pack[] = [
       "73879377",
       "74591968",
       "52684508"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Rise of Destiny",
@@ -1543,7 +1544,8 @@ export const packs: Pack[] = [
       "18891691",
       "60482781",
       "1995985"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Flaming Eternity",
@@ -1616,7 +1618,8 @@ export const packs: Pack[] = [
       "57046845",
       "74388798",
       "87751584"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "The Lost Millennium",
@@ -1689,7 +1692,8 @@ export const packs: Pack[] = [
       "62420419",
       "35809262",
       "61204971"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Cybernetic Revolution",
@@ -1762,7 +1766,8 @@ export const packs: Pack[] = [
       "98585345",
       "37630732",
       "32752319"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Elemental Energy",
@@ -1835,7 +1840,8 @@ export const packs: Pack[] = [
       "83121692",
       "10526791",
       "47737087"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Shadow of Infinity",
@@ -1908,7 +1914,8 @@ export const packs: Pack[] = [
       "32491822",
       "6007213",
       "4162088"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Enemy of Justice",
@@ -1981,7 +1988,8 @@ export const packs: Pack[] = [
       "20951752",
       "40591390",
       "41436536"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Power of the Duelist",
@@ -2054,7 +2062,8 @@ export const packs: Pack[] = [
       "64599569",
       "55171412",
       "81566151"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Cyberdark Impact",
@@ -2127,7 +2136,8 @@ export const packs: Pack[] = [
       "58206034",
       "50140163",
       "37057012"
-    ]
+    ],
+    "secretRareCardIds": []
   },
   {
     "name": "Strike of Neos",
@@ -2572,6 +2582,7 @@ export const packs: Pack[] = [
       "33396948",
       "12600382",
       "44095762"
-    ]
+    ],
+    "secretRareCardIds": []
   }
 ];
