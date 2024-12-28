@@ -6,11 +6,12 @@ build-packs-objects.js was meant to be a one-time-use script.
 
 import { Pack } from './pack';
 
-export const packs: Pack[] = [
+const packs: Pack[] = [
   {
     "name": "Legend of Blue Eyes White Dragon",
     "releaseYear": 2002,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "55291359",
       "85326399",
@@ -152,6 +153,7 @@ export const packs: Pack[] = [
     "name": "Metal Raiders",
     "releaseYear": 2002,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "87322377",
       "60862676",
@@ -311,6 +313,7 @@ export const packs: Pack[] = [
     "name": "Spell Ruler",
     "releaseYear": 2002,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "2964201",
       "3797883",
@@ -430,6 +433,7 @@ export const packs: Pack[] = [
     "name": "Pharaoh's Servant",
     "releaseYear": 2002,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "31447217",
       "78984772",
@@ -550,6 +554,7 @@ export const packs: Pack[] = [
     "name": "Labyrinth of Nightmare",
     "releaseYear": 2003,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "58818411",
       "86281779",
@@ -670,6 +675,7 @@ export const packs: Pack[] = [
     "name": "Legacy of Darkness",
     "releaseYear": 2003,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "75953262",
       "56369281",
@@ -786,6 +792,7 @@ export const packs: Pack[] = [
     "name": "Pharaonic Guardian",
     "releaseYear": 2003,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "4035199",
       "17192817",
@@ -909,6 +916,7 @@ export const packs: Pack[] = [
     "name": "Magician's Force",
     "releaseYear": 2003,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "48202661",
       "11813953",
@@ -1032,6 +1040,7 @@ export const packs: Pack[] = [
     "name": "Dark Crisis",
     "releaseYear": 2003,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "49003308",
       "11987744",
@@ -1153,6 +1162,7 @@ export const packs: Pack[] = [
     "name": "Invasion of Chaos",
     "releaseYear": 2004,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "42129512",
       "43793530",
@@ -1280,6 +1290,7 @@ export const packs: Pack[] = [
     "name": "Ancient Sanctuary",
     "releaseYear": 2004,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "39674352",
       "65957473",
@@ -1407,6 +1418,7 @@ export const packs: Pack[] = [
     "name": "Soul of the Duelist",
     "releaseYear": 2004,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "49563947",
       "86652646",
@@ -1481,6 +1493,7 @@ export const packs: Pack[] = [
     "name": "Rise of Destiny",
     "releaseYear": 2004,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "35322812",
       "62327910",
@@ -1555,6 +1568,7 @@ export const packs: Pack[] = [
     "name": "Flaming Eternity",
     "releaseYear": 2005,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "35052053",
       "36119641",
@@ -1629,6 +1643,7 @@ export const packs: Pack[] = [
     "name": "The Lost Millennium",
     "releaseYear": 2005,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "20721928",
       "84327329",
@@ -1703,6 +1718,7 @@ export const packs: Pack[] = [
     "name": "Cybernetic Revolution",
     "releaseYear": 2005,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "23635815",
       "97240270",
@@ -1777,6 +1793,7 @@ export const packs: Pack[] = [
     "name": "Elemental Energy",
     "releaseYear": 2005,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "7459013",
       "51638941",
@@ -1851,6 +1868,7 @@ export const packs: Pack[] = [
     "name": "Shadow of Infinity",
     "releaseYear": 2006,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "49645921",
       "13250922",
@@ -1925,6 +1943,7 @@ export const packs: Pack[] = [
     "name": "Enemy of Justice",
     "releaseYear": 2006,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "81896370",
       "32296881",
@@ -1999,6 +2018,7 @@ export const packs: Pack[] = [
     "name": "Power of the Duelist",
     "releaseYear": 2006,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "89943723",
       "37265642",
@@ -2073,6 +2093,7 @@ export const packs: Pack[] = [
     "name": "Cyberdark Impact",
     "releaseYear": 2006,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "58098303",
       "64268668",
@@ -2147,6 +2168,7 @@ export const packs: Pack[] = [
     "name": "Strike of Neos",
     "releaseYear": 2007,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "12624008",
       "13846680",
@@ -2231,6 +2253,7 @@ export const packs: Pack[] = [
     "name": "Force of the Breaker",
     "releaseYear": 2007,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "9391354",
       "72903645",
@@ -2315,6 +2338,7 @@ export const packs: Pack[] = [
     "name": "Tactical Evolution",
     "releaseYear": 2007,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "97127906",
       "60606759",
@@ -2420,6 +2444,7 @@ export const packs: Pack[] = [
     "name": "Gladiator's Assault",
     "releaseYear": 2007,
     "numOfCards": 9,
+    "price": 20.00,
     "commonCardIds": [
       "44430454",
       "80825553",
@@ -2530,6 +2555,7 @@ export const packs: Pack[] = [
     "name": "Good Ol' Days",
     "releaseYear": 2006,
     "numOfCards": 5,
+    "price": 20.00,
     "commonCardIds": [
       "24311372",
       "67284908",
@@ -2590,3 +2616,5 @@ export const packs: Pack[] = [
     "secretRareCardIds": []
   }
 ];
+
+export { packs };
