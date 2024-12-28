@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { AllCardsDiv } from "../../components/all-cards-div/all-cards-div";
+import { AllCardsDiv } from "./all-cards-div";
 import { CurrentCardDiv } from "../../components/current-card-div/current-card-div";
 import "./all-cards-page.css";
 
