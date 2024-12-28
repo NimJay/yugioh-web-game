@@ -2,16 +2,6 @@
   position: relative;
 }
 
-.AllCardsPage > header {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  padding: 20px 25px;
-  background-color: #240B46;
-  color: #B5D1FF;
-  border-radius: 40px;
-}
-
 .AllCardsPage > div:nth-child(2) {
   display: flex;
   height: 100vh;
