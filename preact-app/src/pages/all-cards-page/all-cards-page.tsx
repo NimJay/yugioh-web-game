@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 import { AllCardsDiv } from "./all-cards-div";
-import { CurrentCardDiv } from "../../components/current-card-div/current-card-div";
+import { CurrentCardDiv } from "../../shared/current-card-div/current-card-div";
 import "./all-cards-page.css";
 
 function AllCardsPage() {
