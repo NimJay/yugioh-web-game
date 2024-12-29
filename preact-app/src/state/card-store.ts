@@ -1,23 +1,25 @@
-import { getAppState, saveAppState } from "./app-state";
+import { GameState } from "./game-state";
 import { Card } from "./card";
 import { getPackByName, getAllCardsInPack } from "./pack";
 
-async function canBuyCardPack(packName: string): Promise<boolean> {
-  const appState = await getAppState();
+async function canBuyCardPack(
+  gameState: GameState, packName: string,
+): Promise<boolean> {
   const pack = getPackByName(packName);
-  return appState.numOfCoins >= pack.price;
+  return gameState.numOfCoins >= pack.price;
 }
 
-async function buyCardPack(packName: string): Promise<Card[]> {
-  if (!canBuyCardPack(packName)) {
+async function buyCardPack(
+  gameState: GameState, packName: string,
+): Promise<Card[]> {
+  if (!canBuyCardPack(gameState, packName)) {
     return [];
   }
-  const appState = await getAppState();
   const pack = getPackByName(packName);
-  appState.numOfCoins -= pack.price;
+  gameState.numOfCoins -= pack.price;
   const cards = openPack(packName);
-  appState.ownedCards.push(...cards);
-  await saveAppState();
+  gameState.ownedCards.push(...cards);
+  gameState.saveInLocalStorage();
   return cards;
 }
 
