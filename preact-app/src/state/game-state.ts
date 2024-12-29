@@ -24,22 +24,23 @@ class GameState {
     localStorage.setItem('gameState', JSON.stringify(gameState));
   }
 
-}
-
-async function loadGameState(): Promise<GameState> {
-  // Already loaded?
-  if (gameState) {
+  public static async loadGameState(): Promise<GameState> {
+    // Already loaded?
+    if (gameState) {
+      return gameState;
+    }
+    // Load from local storage
+    const gameStateStr = localStorage.getItem('gameState');
+    if (gameStateStr) {
+      gameState = JSON.parse(gameStateStr);
+      gameState = Object.assign(new GameState(), gameState);
+    } else {
+      // New user. So create gameState from scratch
+      gameState = await GameState.createNewGameState();
+    }
     return gameState;
   }
-  // Load from local storage
-  const gameStateStr = localStorage.getItem('gameState');
-  if (gameStateStr) {
-    gameState = JSON.parse(gameStateStr);
-  } else {
-    // New user. So create gameState from scratch
-    gameState = await GameState.createNewGameState();
-  }
-  return gameState;
+
 }
 
-export { GameState, loadGameState };
+export { GameState };

@@ -4,7 +4,7 @@ import "./store-page.css";
 import { Component } from 'preact';
 import { Card } from "../../state/card";
 import { CurrentPackDiv } from "./current-pack-div";
-import { GameState, loadGameState } from "../../state/game-state";
+import { GameState } from "../../state/game-state";
 import { PackCardsUnveilDiv } from "./pack-cards-unveil-div";
 import { buyCardPack } from "../../state/card-store";
 
@@ -29,7 +29,7 @@ class StorePage extends Component<{}, StorePageState> {
   }
 
   async componentDidMount() {
-    const gameState = await loadGameState();
+    const gameState = await GameState.loadGameState();
     this.setState({
       isInitialLoadDone: true,
       gameState,
@@ -45,7 +45,6 @@ class StorePage extends Component<{}, StorePageState> {
     if (!gameState) {
       return;
     }
-    debugger;
     const cards = await buyCardPack(gameState, packName);
     this.setState({ cardsJustPurchasedToUnveil: cards });
   }
