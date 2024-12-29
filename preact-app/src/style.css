@@ -2,11 +2,14 @@
   box-sizing: border-box;
 }
 
-body {
+body, button {
   font-family: "Space Grotesk", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+body {
   color: white;
   background-color: #240B46;
   margin: 0;
@@ -22,7 +25,13 @@ a:visited {
 }
 
 button {
+  padding: 10px 20px;
   cursor: pointer;
   border: none;
   outline: none;
+}
+
+ol, ul {
+  list-style-type: none;
+  padding: 0;
 }

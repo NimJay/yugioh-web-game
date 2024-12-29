@@ -1,0 +1,10 @@
+.CurrentPackDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.CurrentPackDiv img {
+  width: 100%;
+}

@@ -1,0 +1,31 @@
+.StorePage>div:nth-child(2) {
+  display: flex;
+  height: 100vh;
+}
+
+.StorePage ol {
+  margin-top: 100px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.StorePage ol li {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.StorePage ol li img {
+  width: 200px;
+}
+
+.StorePage .StorePagePacksOl {
+  width: 75%;
+  min-width: 75%;
+  min-height: 100%;
+}
+
+.StorePage .CurrentPackDiv {
+  width: 25%;
+  min-width: 25%;
+  min-height: 100%;
+}
