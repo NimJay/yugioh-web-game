@@ -8,19 +8,20 @@ import { GameState } from "../../state/game-state";
 import { PackCardsUnveilDiv } from "./pack-cards-unveil-div";
 import { buyCardPack } from "../../state/card-store";
 
+interface StorePageProps {
+  gameState: GameState;
+}
+
 interface StorePageState {
-  gameState?: GameState;
   currPack?: Pack;
-  isInitialLoadDone: boolean;
   cardsJustPurchasedToUnveil: Card[];
 }
 
-class StorePage extends Component<{}, StorePageState> {
+class StorePage extends Component<StorePageProps, StorePageState> {
 
   constructor() {
     super();
     this.state = {
-      isInitialLoadDone: false,
       cardsJustPurchasedToUnveil: [],
     };
     this.onClickBuyCurrPack = this.onClickBuyCurrPack.bind(this);
@@ -28,20 +29,12 @@ class StorePage extends Component<{}, StorePageState> {
     this.onClosePackCardsUnveilDiv = this.onClosePackCardsUnveilDiv.bind(this);
   }
 
-  async componentDidMount() {
-    const gameState = await GameState.loadGameState();
-    this.setState({
-      isInitialLoadDone: true,
-      gameState,
-    });
-  }
-
   onClosePackCardsUnveilDiv() {
     this.setState({ cardsJustPurchasedToUnveil: [] });
   }
 
   async onClickBuy(packName: string) {
-    const { gameState } = this.state;
+    const { gameState } = this.props;
     if (!gameState) {
       return;
     }
@@ -59,12 +52,8 @@ class StorePage extends Component<{}, StorePageState> {
 
   render() {
     const {
-      isInitialLoadDone, currPack, cardsJustPurchasedToUnveil,
+      currPack, cardsJustPurchasedToUnveil,
     } = this.state;
-
-    if (!isInitialLoadDone) {
-      return <div className={`StorePage`}>Loading game...</div>
-    }
 
     // TODO: Implement pack unlocking logic
     const unlockedPacks = [

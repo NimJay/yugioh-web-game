@@ -1,4 +1,4 @@
-import { render } from 'preact';
+import { Component, render } from 'preact';
 import { LocationProvider, Router, Route } from 'preact-iso';
 
 import { AllCardsPage } from './pages/all-cards-page/all-cards-page.js';
@@ -8,22 +8,41 @@ import { MyDeckPage } from './pages/my-deck-page/my-deck-page.js';
 import { StorePage } from './pages/store-page/store-page.js';
 import { NotFoundPage } from './pages/_404.jsx';
 import './style.css';
+import { GameState } from './state/game-state.js';
 
-export function App() {
-	return (
-		<LocationProvider>
-			<main>
-				<Router>
-          <Route path="/" component={HomePage} />
-          <Route path="/all-cards" component={AllCardsPage} />
-          <Route path="/duel" component={DuelPage} />
-          <Route path="/my-deck" component={MyDeckPage} />
-          <Route path="/store" component={StorePage} />
-					<Route default component={NotFoundPage} />
-				</Router>
-			</main>
-		</LocationProvider>
-	);
+interface AppComponentState {
+  gameState?: GameState;
 }
 
-render(<App />, document.getElementById('app'));
+class AppComponent extends Component<{}, AppComponentState> {
+
+  async componentDidMount(): Promise<void> {
+    const gameState = await GameState.loadGameState();
+    this.setState({ gameState });
+  }
+
+  render() {
+    const { gameState } = this.state as AppComponentState;
+
+    if (!gameState) {
+      return <div>Loading...</div>;
+    }
+
+    return (
+      <LocationProvider>
+        <main>
+          <Router>
+            <Route path="/" component={HomePage} />
+            <Route path="/all-cards" component={AllCardsPage} />
+            <Route path="/duel" component={DuelPage} />
+            <Route path="/my-deck" component={MyDeckPage} />
+            <Route path="/store" component={StorePage} gameState={gameState} />
+            <Route default component={NotFoundPage} />
+          </Router>
+        </main>
+      </LocationProvider>
+    );
+  }
+}
+
+render(<AppComponent />, document.getElementById('app'));
