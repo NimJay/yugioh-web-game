@@ -35,7 +35,7 @@ class AppComponent extends Component<{}, AppComponentState> {
             <Route path="/" component={HomePage} />
             <Route path="/all-cards" component={AllCardsPage} />
             <Route path="/duel" component={DuelPage} />
-            <Route path="/my-deck" component={MyDeckPage} />
+            <Route path="/my-deck" component={MyDeckPage} gameState={gameState} />
             <Route path="/store" component={StorePage} gameState={gameState} />
             <Route default component={NotFoundPage} />
           </Router>

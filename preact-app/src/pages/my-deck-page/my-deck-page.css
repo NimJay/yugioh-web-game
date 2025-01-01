@@ -1,0 +1,20 @@
+.MyDeckPage {
+  position: relative;
+}
+
+.MyDeckPage>div:nth-child(2) {
+  display: flex;
+  height: 100vh;
+}
+
+.MyDeckPage .OwnedCardsDiv {
+  width: 75%;
+  min-width: 75%;
+  min-height: 100%;
+}
+
+.MyDeckPage .CurrentCardDiv {
+  width: 25%;
+  min-width: 25%;
+  min-height: 100%;
+}

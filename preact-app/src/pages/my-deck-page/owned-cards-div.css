@@ -1,0 +1,31 @@
+.OwnedCardsDiv {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.OwnedCardsDiv .CardDiv img {
+  height: 200px;
+}
+
+.OwnedCardsDiv .CardDiv {
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.OwnedCardsDiv .OwnedCardsDivShowMoreCardsDiv {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.OwnedCardsDiv button {
+  padding: 15px 20px;
+  color: black;
+  background-color: #F8F2FF;
+  border-radius: 50px;
+}
