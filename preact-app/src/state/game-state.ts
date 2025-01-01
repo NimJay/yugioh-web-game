@@ -1,4 +1,5 @@
 import { Card } from "./card";
+import { notifyOnChangeListeners } from "./on-change-listeners";
 
 let gameState: GameState;
 
@@ -39,6 +40,11 @@ class GameState {
       gameState = await GameState.createNewGameState();
     }
     return gameState;
+  }
+
+  public updateNumOfCoins(numOfCoins: number): void {
+    this.numOfCoins = numOfCoins;
+    notifyOnChangeListeners('gameState.numOfCoins', this.numOfCoins);
   }
 
 }

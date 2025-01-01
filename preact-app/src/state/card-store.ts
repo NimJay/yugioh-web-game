@@ -16,7 +16,7 @@ async function buyCardPack(
     return [];
   }
   const pack = getPackByName(packName);
-  gameState.numOfCoins -= pack.price;
+  gameState.updateNumOfCoins(gameState.numOfCoins - pack.price);
   const cards = openPack(packName);
   gameState.ownedCards.push(...cards);
   gameState.saveInLocalStorage();
