@@ -7,6 +7,7 @@ import { CurrentPackDiv } from "./current-pack-div";
 import { GameState } from "../../state/game-state";
 import { PackCardsUnveilDiv } from "./pack-cards-unveil-div";
 import { buyCardPack } from "../../state/card-store";
+import { registerOnChangeListener, unregisterOnChangeListener } from "../../state/on-change-listeners";
 
 interface StorePageProps {
   gameState: GameState;
@@ -15,18 +16,33 @@ interface StorePageProps {
 interface StorePageState {
   currPack?: Pack;
   cardsJustPurchasedToUnveil: Card[];
+  numOfCoins: number;
 }
 
 class StorePage extends Component<StorePageProps, StorePageState> {
 
-  constructor() {
+  constructor(props: StorePageProps) {
     super();
     this.state = {
       cardsJustPurchasedToUnveil: [],
+      numOfCoins: props.gameState.numOfCoins,
     };
     this.onClickBuyCurrPack = this.onClickBuyCurrPack.bind(this);
     this.onClickBuy = this.onClickBuy.bind(this);
     this.onClosePackCardsUnveilDiv = this.onClosePackCardsUnveilDiv.bind(this);
+    this.onNumberOfCoinsChange = this.onNumberOfCoinsChange.bind(this);
+  }
+
+  componentDidMount(): void {
+    registerOnChangeListener('gameState.numOfCoins', this.onNumberOfCoinsChange);
+  }
+
+  componentWillUnmount(): void {
+    unregisterOnChangeListener('gameState.numOfCoins', this.onNumberOfCoinsChange);
+  }
+
+  onNumberOfCoinsChange(numOfCoins: number) {
+    this.setState({ numOfCoins });
   }
 
   onClosePackCardsUnveilDiv() {
@@ -52,7 +68,7 @@ class StorePage extends Component<StorePageProps, StorePageState> {
 
   render() {
     const {
-      currPack, cardsJustPurchasedToUnveil,
+      currPack, cardsJustPurchasedToUnveil, numOfCoins,
     } = this.state;
 
     // TODO: Implement pack unlocking logic
@@ -79,7 +95,8 @@ class StorePage extends Component<StorePageProps, StorePageState> {
           <CurrentPackDiv
             pack={currPack}
             canBuyPack={false}
-            onClickBuy={this.onClickBuyCurrPack} />
+            onClickBuy={this.onClickBuyCurrPack}
+            numOfCoinsOwned={numOfCoins} />
         </div>
         {cardsJustPurchasedToUnveil.length > 0 && (
           <PackCardsUnveilDiv

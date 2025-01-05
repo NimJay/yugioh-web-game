@@ -4,11 +4,12 @@ import './current-pack-div.css';
 interface CurrentPackDivProps {
   canBuyPack: boolean;
   pack?: Pack;
+  numOfCoinsOwned: number;
   onClickBuy: () => void;
 }
 
 function CurrentPackDiv({
-  canBuyPack, pack, onClickBuy,
+  canBuyPack, pack, onClickBuy, numOfCoinsOwned,
 }: CurrentPackDivProps) {
   if (!pack) {
     return <div className={`CurrentPackDiv`}></div>;
@@ -19,8 +20,9 @@ function CurrentPackDiv({
     <div className={`CurrentPackDiv`}>
       <img src={imgSrc} alt={pack.name} />
       <h2>{pack.name}</h2>
+      <p>You have {numOfCoinsOwned} coins.</p>
       <button disabled={canBuyPack} onClick={onClickBuy}>
-        Buy
+        Buy for {pack.price} coins.
       </button>
     </div>
   );
