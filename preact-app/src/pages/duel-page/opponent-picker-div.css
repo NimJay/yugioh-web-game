@@ -1,0 +1,33 @@
+.OpponentPickerDiv {
+  padding: 20px;
+}
+
+.OpponentPickerDiv ol {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  margin-top: 20px;
+}
+
+.OpponentPickerDiv li {
+  width: 40%;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px 10px 0;
+}
+
+.OpponentPickerDiv img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.OpponentPickerDiv li button {
+  width: 100%;
+}
+
+.OpponentPickerDiv li button:hover {
+  outline: solid 2px rgb(255, 240, 73);
+}

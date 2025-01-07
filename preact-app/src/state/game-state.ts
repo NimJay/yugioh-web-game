@@ -1,4 +1,5 @@
 import { Card } from "./card";
+import { Duel } from "./duel";
 import { notifyOnChangeListeners } from "./on-change-listeners";
 
 let gameState: GameState;
@@ -35,6 +36,9 @@ class GameState {
     if (gameStateStr) {
       gameState = JSON.parse(gameStateStr);
       gameState = Object.assign(new GameState(), gameState);
+      if (gameState.currentDuel) {
+        gameState.currentDuel = Duel.buildDuelFromParsedJsonObject(gameState.currentDuel);
+      }
     } else {
       // New user. So create gameState from scratch
       gameState = await GameState.createNewGameState();
