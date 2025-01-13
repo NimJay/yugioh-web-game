@@ -1,0 +1,37 @@
+.DuelDiv {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.DuelHeaderDiv {
+  height: 15vh;
+}
+
+.DuelMiddleDiv {
+  height: 65vh;
+  display: flex;
+}
+
+.DuelMiddleDiv .PlaymatsDiv {
+  width: 75%;
+  height: 100%;
+}
+
+.DuelMiddleDiv .CurrentCardDiv {
+  width: 25%;
+  height: 100%;
+}
+
+.DuelFooterDiv {
+  height: 30vh;
+  display: flex;
+}
+
+.DuelFooterDiv .HandDiv {
+  width: 75%;
+}
+
+.DuelFooterDiv .ProceedDiv {
+  width: 25%;
+}

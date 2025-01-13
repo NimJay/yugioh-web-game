@@ -2,6 +2,7 @@ import { Component } from "preact";
 import { Duel } from "../../state/duel";
 import { GameState } from "../../state/game-state";
 import { OpponentPickerDiv } from "./opponent-picker-div";
+import { DuelDiv } from "./duel-div";
 
 interface DuelPageProps {
   gameState: GameState;
@@ -45,9 +46,7 @@ class DuelPage extends Component<DuelPageProps, DuelPageState> {
       );
     }
     return (
-      <div>
-        <p>{JSON.stringify(this.props.gameState.currentDuel)}</p>
-      </div>
+      <DuelDiv gameState={this.props.gameState} />
     );
   }
 
