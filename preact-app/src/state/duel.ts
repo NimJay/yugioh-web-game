@@ -1,4 +1,14 @@
 import { Card } from "./card";
+import { notifyOnChangeListeners } from "./on-change-listeners";
+
+enum Phase {
+  DRAW = 'DRAW',
+  STANDBY = 'STANDBY',
+  MAIN1 = 'MAIN_1',
+  BATTLE = 'BATTLE',
+  MAIN2 = 'MAIN_2',
+  END = 'END',
+}
 
 interface Zone {
   card?: Card;
@@ -21,15 +31,18 @@ class Duel {
 
   p1: Player;
   p2: Player;
+  currentTurnPlayer: Player;
+  currentPhase: Phase = Phase.DRAW;
 
   // Use createNewDuel() to create a new Duel.
-  private constructor() {}
+  private constructor() { }
 
   public static createNewDuel(
     p1Name: string,
     p2Name: string,
     p1Deck: Card[],
     p2Deck: Card[],
+    isP1First = true,
   ): Duel {
     const duel = new Duel();
     duel.p1 = {
@@ -60,6 +73,7 @@ class Duel {
       duel.p1.hand.push(duel.p1.deck.pop());
       duel.p2.hand.push(duel.p1.deck.pop());
     }
+    duel.currentTurnPlayer = isP1First ? duel.p1 : duel.p2;
     return duel;
   }
 
@@ -79,6 +93,37 @@ class Duel {
     return zones;
   }
 
+  public enterNextPhase(): Phase {
+    switch (this.currentPhase) {
+      case Phase.DRAW:
+        this.currentPhase = Phase.STANDBY;
+        break;
+      case Phase.STANDBY:
+        this.currentPhase = Phase.MAIN1;
+        break;
+      case Phase.MAIN1:
+        this.currentPhase = Phase.BATTLE;
+        break;
+      case Phase.BATTLE:
+        this.currentPhase = Phase.MAIN2;
+        break;
+      case Phase.MAIN2:
+        this.currentPhase = Phase.END;
+        break;
+      case Phase.END:
+        this.currentPhase = Phase.DRAW;
+        this.currentTurnPlayer = this.currentTurnPlayer === this.p1
+          ? this.p2
+          : this.p1;
+        break;
+    }
+    notifyOnChangeListeners(
+      'gameState.currentDuel.currentPhase',
+      this.currentPhase,
+    );
+    return this.currentPhase;
+  }
+
 }
 
-export { Duel };
+export { Duel, Phase };
