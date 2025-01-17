@@ -7,23 +7,45 @@ import { Component } from "preact";
 import { GameState } from "../../state/game-state";
 import "./duel-div.css";
 import { CurrentCardDiv } from "../../shared/current-card-div/current-card-div";
-import { cards } from "../../state/cards";
+import { Card } from "../../state/card";
 
 interface DuelDivProps {
   gameState: GameState;
 }
 
-class DuelDiv extends Component<DuelDivProps> {
+interface DuelDivState {
+  currentCard?: Card;
+}
+
+class DuelDiv extends Component<DuelDivProps, DuelDivState> {
+
+  constructor(props: DuelDivProps) {
+    super(props);
+    this.state = {};
+    this.onSetCurrentCard = this.onSetCurrentCard.bind(this);
+  }
+
+  onSetCurrentCard(card: Card) {
+    this.setState({ currentCard: card });
+  }
+
   render() {
+    const { gameState } = this.props;
+    const { currentCard } = this.state;
+    if (!gameState.currentDuel) {
+      return <div>Something went wrong. Missing currentDuel.</div>;
+    }
     return (
       <div class="DuelDiv">
         <DuelHeaderDiv />
         <div class="DuelMiddleDiv">
           <PlaymatsDiv />
-          <CurrentCardDiv card={cards[321]} />
+          <CurrentCardDiv card={currentCard} />
         </div>
         <div class="DuelFooterDiv">
-          <HandDiv />
+          <HandDiv
+            hand={gameState.currentDuel.p1.hand}
+            onMouseEnterCard={this.onSetCurrentCard} />
           <ProceedDiv />
         </div>
       </div>
@@ -39,11 +61,31 @@ function DuelHeaderDiv() {
   );
 }
 
-function HandDiv() {
+function HandDiv(props: { hand: Card[], onMouseEnterCard: (card: Card) => void }) {
+  const { hand, onMouseEnterCard } = props;
+  const HandCardLis = hand.map((card) => (
+    <HandCardLi
+      card={card}
+      onMouseEnter={() => onMouseEnterCard(card)} />
+  ));
   return (
     <div class="HandDiv">
-      HandDiv
+      <ol>
+        {HandCardLis}
+      </ol>
     </div>
+  );
+}
+
+function HandCardLi(props: { card: Card, onMouseEnter: () => void }) {
+  const { card, onMouseEnter } = props;
+  return (
+    <li class="HandCardLi">
+      <img
+        src={"/public/cards/" + card.id + ".png"}
+        alt={card.name}
+        onMouseEnter={onMouseEnter} />
+    </li>
   );
 }
 
