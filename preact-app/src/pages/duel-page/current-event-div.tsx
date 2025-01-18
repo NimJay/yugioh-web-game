@@ -90,7 +90,7 @@ class CurrentEventDiv extends Component<CurrentEventDivProps, CurrentEventDivSta
         break;
     }
     const childComponent = <ParagraphDiv paragraph={paragraph} />;
-    this.queueChildComponentAndEnsureDequeue(childComponent, 5000);
+    this.queueChildComponentAndEnsureDequeue(childComponent, 3500);
   }
 
   queueChildComponentAndEnsureDequeue(
