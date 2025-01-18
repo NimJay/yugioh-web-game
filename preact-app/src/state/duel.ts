@@ -4,9 +4,9 @@ import { notifyOnChangeListeners } from "./on-change-listeners";
 enum Phase {
   DRAW = 'DRAW',
   STANDBY = 'STANDBY',
-  MAIN1 = 'MAIN_1',
+  MAIN_1 = 'MAIN_1',
   BATTLE = 'BATTLE',
-  MAIN2 = 'MAIN_2',
+  MAIN_2 = 'MAIN_2',
   END = 'END',
 }
 
@@ -99,15 +99,15 @@ class Duel {
         this.currentPhase = Phase.STANDBY;
         break;
       case Phase.STANDBY:
-        this.currentPhase = Phase.MAIN1;
+        this.currentPhase = Phase.MAIN_1;
         break;
-      case Phase.MAIN1:
+      case Phase.MAIN_1:
         this.currentPhase = Phase.BATTLE;
         break;
       case Phase.BATTLE:
-        this.currentPhase = Phase.MAIN2;
+        this.currentPhase = Phase.MAIN_2;
         break;
-      case Phase.MAIN2:
+      case Phase.MAIN_2:
         this.currentPhase = Phase.END;
         break;
       case Phase.END:

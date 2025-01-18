@@ -8,6 +8,8 @@ import { GameState } from "../../state/game-state";
 import "./duel-div.css";
 import { CurrentCardDiv } from "../../shared/current-card-div/current-card-div";
 import { Card } from "../../state/card";
+import { CurrentEventDiv } from "./current-event-div";
+import { Duel } from "../../state/duel";
 
 interface DuelDivProps {
   gameState: GameState;
@@ -39,7 +41,7 @@ class DuelDiv extends Component<DuelDivProps, DuelDivState> {
       <div class="DuelDiv">
         <DuelHeaderDiv />
         <div class="DuelMiddleDiv">
-          <PlaymatsDiv />
+          <PlaymatsDiv duel={gameState.currentDuel} />
           <CurrentCardDiv card={currentCard} />
         </div>
         <div class="DuelFooterDiv">
@@ -97,10 +99,12 @@ function ProceedDiv() {
   );
 }
 
-function PlaymatsDiv() {
+function PlaymatsDiv(props: { duel: Duel }) {
+  const { duel } = props;
   return (
     <div class="PlaymatsDiv">
       PlaymatsDiv
+      <CurrentEventDiv duel={duel} />
     </div>
   );
 }

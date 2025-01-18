@@ -59,3 +59,8 @@
 .HandCardLi img {
   max-height: 100%;
 }
+
+.PlaymatsDiv {
+  /* So that we can center the <CurrentEventDiv> */
+  position: relative;
+}

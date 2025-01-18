@@ -1,0 +1,14 @@
+.CurrentEventDiv {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  min-height: 60%;
+  min-width: 60%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(36, 11, 70, 0.5);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
