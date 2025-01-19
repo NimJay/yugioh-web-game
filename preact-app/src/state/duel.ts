@@ -22,7 +22,7 @@ interface Player {
   hand: Card[];
   monsterZones: Zone[];
   spellTrapZones: Zone[];
-  fieldZones: Zone;
+  fieldZone: Zone;
   graveyard: Card[];
   banished: Card[];
   number: 1 | 2;
@@ -53,7 +53,7 @@ class Duel {
       hand: [],
       monsterZones: duel.createZones(5),
       spellTrapZones: duel.createZones(5),
-      fieldZones: duel.createZones(5)[0],
+      fieldZone: duel.createZones(5)[0],
       graveyard: [],
       banished: [],
       number: 1,
@@ -65,7 +65,7 @@ class Duel {
       hand: [],
       monsterZones: duel.createZones(5),
       spellTrapZones: duel.createZones(5),
-      fieldZones: duel.createZones(5)[0],
+      fieldZone: duel.createZones(5)[0],
       graveyard: [],
       banished: [],
       number: 2,
