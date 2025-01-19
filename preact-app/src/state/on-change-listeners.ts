@@ -11,9 +11,17 @@ type SubjectId = 'gameState.numOfCoins'
   | 'gameState.currentDuel.p1.deck'
   | 'gameState.currentDuel.p1.hand'
   | 'gameState.currentDuel.p1.lifePoints'
+  | 'gameState.currentDuel.p1.monsterZones'
+  | 'gameState.currentDuel.p1.spellTrapZones'
+  | 'gameState.currentDuel.p1.fieldZone'
+  | 'gameState.currentDuel.p1.graveyard'
   | 'gameState.currentDuel.p2.deck'
   | 'gameState.currentDuel.p2.hand'
-  | 'gameState.currentDuel.p2.lifePoints';
+  | 'gameState.currentDuel.p2.lifePoints'
+  | 'gameState.currentDuel.p2.monsterZones'
+  | 'gameState.currentDuel.p2.spellTrapZones'
+  | 'gameState.currentDuel.p2.fieldZone'
+  | 'gameState.currentDuel.p2.graveyard';
 
 const onChangeListenersMap: Map<SubjectId, ListenerFunction[]> = new Map();
 
