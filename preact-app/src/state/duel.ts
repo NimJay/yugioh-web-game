@@ -25,6 +25,7 @@ interface Player {
   fieldZones: Zone;
   graveyard: Card[];
   banished: Card[];
+  number: 1 | 2;
 }
 
 class Duel {
@@ -55,6 +56,7 @@ class Duel {
       fieldZones: duel.createZones(5)[0],
       graveyard: [],
       banished: [],
+      number: 1,
     };
     duel.p2 = {
       name: p2Name,
@@ -66,6 +68,7 @@ class Duel {
       fieldZones: duel.createZones(5)[0],
       graveyard: [],
       banished: [],
+      number: 2,
     };
     Duel.shuffleDeck(duel.p1.deck);
     Duel.shuffleDeck(duel.p2.deck);
@@ -91,6 +94,66 @@ class Duel {
       zones.push({ card: undefined, isCardFaceUp: false });
     }
     return zones;
+  }
+
+  public resumeDuel(): void {
+    switch (this.currentPhase) {
+      case Phase.DRAW:
+        this.drawCard(this.currentTurnPlayer);
+        this.enterNextPhase();
+        this.resumeDuel();
+        break;
+      case Phase.STANDBY:
+        break;
+      case Phase.MAIN_1:
+        break;
+      case Phase.BATTLE:
+        break;
+      case Phase.MAIN_2:
+        break;
+      case Phase.END:
+        break;
+    }
+  }
+
+  public drawCard(player: Player): void {
+    if (player.deck.length === 0) {
+      this.setLifePoints(player, 0);
+    }
+    player.hand.push(player.deck.pop());
+    notifyOnChangeListeners(
+      `gameState.currentDuel.p${player.number}.deck`,
+      player.deck,
+    );
+    notifyOnChangeListeners(
+      `gameState.currentDuel.p${player.number}.hand`,
+      player.hand,
+    );
+  }
+
+  public increaseLifePoints(player: Player, amount: number): void {
+    const newLifePoints = player.lifePoints + amount;
+    this.setLifePoints(player, newLifePoints);
+  }
+
+  public reduceLifePoints(player: Player, amount: number): void {
+    const newLifePoints = Math.max(0, player.lifePoints - amount);
+    this.setLifePoints(player, newLifePoints);
+  }
+
+  public setLifePoints(player: Player, lifePoints: number): void {
+    player.lifePoints = Math.max(lifePoints, 0);
+    notifyOnChangeListeners(
+      `gameState.currentDuel.p${player.number}.lifePoints`,
+      lifePoints,
+    );
+    if (player.lifePoints === 0) {
+      this.pauseDuel();
+    }
+  }
+
+  public pauseDuel(): void {
+    // TODO: Implement this.
   }
 
   public enterNextPhase(): Phase {

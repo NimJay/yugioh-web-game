@@ -7,7 +7,13 @@ we need a way to notify the UI components when the game state changes.
 type ListenerFunction = (value: any) => void;
 
 type SubjectId = 'gameState.numOfCoins'
-  | 'gameState.currentDuel.currentPhase';
+  | 'gameState.currentDuel.currentPhase'
+  | 'gameState.currentDuel.p1.deck'
+  | 'gameState.currentDuel.p1.hand'
+  | 'gameState.currentDuel.p1.lifePoints'
+  | 'gameState.currentDuel.p2.deck'
+  | 'gameState.currentDuel.p2.hand'
+  | 'gameState.currentDuel.p2.lifePoints';
 
 const onChangeListenersMap: Map<SubjectId, ListenerFunction[]> = new Map();
 

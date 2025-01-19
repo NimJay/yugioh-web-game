@@ -36,30 +36,6 @@
   width: 25%;
 }
 
-.HandDiv {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-}
-
-.HandDiv ol {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: scroll;
-}
-
-.HandCardLi {
-  height: 100%;
-  padding: 15px;
-}
-
-.HandCardLi img {
-  max-height: 100%;
-}
-
 .PlaymatsDiv {
   /* So that we can center the <CurrentEventDiv> */
   position: relative;

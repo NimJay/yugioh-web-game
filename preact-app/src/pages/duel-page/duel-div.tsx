@@ -4,15 +4,15 @@ The <DuelDiv> takes up the entire page.
 */
 
 import { Component } from "preact";
-import { GameState } from "../../state/game-state";
 import "./duel-div.css";
 import { CurrentCardDiv } from "../../shared/current-card-div/current-card-div";
 import { Card } from "../../state/card";
 import { CurrentEventDiv } from "./current-event-div";
 import { Duel } from "../../state/duel";
+import { HandDiv } from "./hand-div";
 
 interface DuelDivProps {
-  gameState: GameState;
+  duel: Duel;
 }
 
 interface DuelDivState {
@@ -31,22 +31,32 @@ class DuelDiv extends Component<DuelDivProps, DuelDivState> {
     this.setState({ currentCard: card });
   }
 
+  componentDidMount() {
+    const { duel } = this.props;
+    duel.resumeDuel();
+  }
+
+  componentWillUnmount(): void {
+    const { duel } = this.props;
+    duel.pauseDuel();
+  }
+
   render() {
-    const { gameState } = this.props;
+    const { duel } = this.props;
     const { currentCard } = this.state;
-    if (!gameState.currentDuel) {
-      return <div>Something went wrong. Missing currentDuel.</div>;
+    if (!duel) {
+      return <div>Something went wrong. Missing duel.</div>;
     }
     return (
       <div class="DuelDiv">
         <DuelHeaderDiv />
         <div class="DuelMiddleDiv">
-          <PlaymatsDiv duel={gameState.currentDuel} />
+          <PlaymatsDiv duel={duel} />
           <CurrentCardDiv card={currentCard} />
         </div>
         <div class="DuelFooterDiv">
           <HandDiv
-            hand={gameState.currentDuel.p1.hand}
+            duel={duel}
             onMouseEnterCard={this.onSetCurrentCard} />
           <ProceedDiv />
         </div>
@@ -60,34 +70,6 @@ function DuelHeaderDiv() {
     <div class="DuelHeaderDiv">
       DuelHeader
     </div>
-  );
-}
-
-function HandDiv(props: { hand: Card[], onMouseEnterCard: (card: Card) => void }) {
-  const { hand, onMouseEnterCard } = props;
-  const HandCardLis = hand.map((card) => (
-    <HandCardLi
-      card={card}
-      onMouseEnter={() => onMouseEnterCard(card)} />
-  ));
-  return (
-    <div class="HandDiv">
-      <ol>
-        {HandCardLis}
-      </ol>
-    </div>
-  );
-}
-
-function HandCardLi(props: { card: Card, onMouseEnter: () => void }) {
-  const { card, onMouseEnter } = props;
-  return (
-    <li class="HandCardLi">
-      <img
-        src={"/public/cards/" + card.id + ".png"}
-        alt={card.name}
-        onMouseEnter={onMouseEnter} />
-    </li>
   );
 }
 

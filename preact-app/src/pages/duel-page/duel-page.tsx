@@ -9,14 +9,13 @@ interface DuelPageProps {
 }
 
 interface DuelPageState {
-  hasCurrentDuel: boolean;
+  currentDuel?: Duel;
 }
 
 class DuelPage extends Component<DuelPageProps, DuelPageState> {
 
   public constructor(props: DuelPageProps) {
     super(props);
-    this.setState({ hasCurrentDuel: !!props.gameState.currentDuel });
     this.onDuelOpponent = this.onDuelOpponent.bind(this);
   }
 
@@ -33,12 +32,13 @@ class DuelPage extends Component<DuelPageProps, DuelPageState> {
       ownedMonsterCardsClone, // TODO: Build a deck for each opponent
     );
     gameState.currentDuel = currentDuel;
-    this.setState({ hasCurrentDuel: true });
+    this.setState({ currentDuel });
   }
 
   public render() {
-    const { hasCurrentDuel } = this.state;
-    if (!hasCurrentDuel) {
+    const { gameState } = this.props;
+    const { currentDuel } = this.state;
+    if (!currentDuel) {
       return (
         <div>
           <OpponentPickerDiv onDuelOpponent={this.onDuelOpponent} />
@@ -46,7 +46,7 @@ class DuelPage extends Component<DuelPageProps, DuelPageState> {
       );
     }
     return (
-      <DuelDiv gameState={this.props.gameState} />
+      <DuelDiv duel={currentDuel} />
     );
   }
 
