@@ -17,6 +17,9 @@ class DuelPage extends Component<DuelPageProps, DuelPageState> {
   public constructor(props: DuelPageProps) {
     super(props);
     this.onDuelOpponent = this.onDuelOpponent.bind(this);
+    this.state = {
+      currentDuel: props.gameState.currentDuel,
+    }
   }
 
   onDuelOpponent(opponentName: string) {
