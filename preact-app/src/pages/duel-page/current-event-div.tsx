@@ -51,7 +51,6 @@ class CurrentEventDiv extends Component<CurrentEventDivProps, CurrentEventDivSta
       'gameState.currentDuel.currentPhase',
       this.onPhaseChange,
     );
-    this.onPhaseChange(this.props.duel.currentPhase);
   }
 
   componentWillUnmount(): void {
