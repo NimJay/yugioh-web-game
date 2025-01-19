@@ -36,7 +36,6 @@ class DuelPage extends Component<DuelPageProps, DuelPageState> {
   }
 
   public render() {
-    const { gameState } = this.props;
     const { currentDuel } = this.state;
     if (!currentDuel) {
       return (
