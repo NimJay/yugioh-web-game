@@ -96,14 +96,37 @@ class Duel {
     return zones;
   }
 
-  public resumeDuel(): void {
+  private waitForActivationsToComplete(milliseconds: number): Promise<void> {
+    return new Promise((resolve) => {
+      setTimeout(async () => {
+        // TODO: Implement waiting for card activations
+        // (both existing activations and new player-triggered activations).
+        const shouldWaitMore = false;
+        if (shouldWaitMore) {
+          await this.waitForActivationsToComplete(milliseconds);
+        }
+        resolve();
+      }, milliseconds);
+    });
+  }
+
+  public async resumeDuel(): Promise<void> {
     switch (this.currentPhase) {
       case Phase.DRAW:
+        await this.waitForActivationsToComplete(3000);
+        // Caution: Drawing and entering the Standby phase must be atomic
+        // (immediately after each other). The user should not be able to
+        // exit the page in between (unless we keep track of whether the
+        // user has drawn for this phase/turn). We will need to fix this
+        // before supporting activations between drawing and entering the
+        // Standby phase (e.g., "Just after you draw a card..." effects).
         this.drawCard(this.currentTurnPlayer);
         this.enterNextPhase();
         this.resumeDuel();
         break;
       case Phase.STANDBY:
+        await this.waitForActivationsToComplete(3000);
+        this.enterNextPhase();
         break;
       case Phase.MAIN_1:
         break;
@@ -157,6 +180,7 @@ class Duel {
   }
 
   public enterNextPhase(): Phase {
+    const phaseBefore = this.currentPhase;
     switch (this.currentPhase) {
       case Phase.DRAW:
         this.currentPhase = Phase.STANDBY;
@@ -180,10 +204,14 @@ class Duel {
           : this.p1;
         break;
     }
-    notifyOnChangeListeners(
-      'gameState.currentDuel.currentPhase',
-      this.currentPhase,
-    );
+    const didPhaseChange = phaseBefore !== this.currentPhase;
+    if (didPhaseChange) {
+      console.log(`Entering next phase: ${this.currentPhase}.`);
+      notifyOnChangeListeners(
+        'gameState.currentDuel.currentPhase',
+        this.currentPhase,
+      );
+    }
     return this.currentPhase;
   }
 

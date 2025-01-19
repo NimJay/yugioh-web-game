@@ -10,6 +10,7 @@ import { Card } from "../../state/card";
 import { CurrentEventDiv } from "./current-event-div";
 import { Duel } from "../../state/duel";
 import { HandDiv } from "./hand-div";
+import { ProceedDiv } from "./proceed-div";
 
 interface DuelDivProps {
   duel: Duel;
@@ -58,7 +59,7 @@ class DuelDiv extends Component<DuelDivProps, DuelDivState> {
           <HandDiv
             duel={duel}
             onMouseEnterCard={this.onSetCurrentCard} />
-          <ProceedDiv />
+          <ProceedDiv duel={duel} />
         </div>
       </div>
     );
@@ -69,14 +70,6 @@ function DuelHeaderDiv() {
   return (
     <div class="DuelHeaderDiv">
       DuelHeader
-    </div>
-  );
-}
-
-function ProceedDiv() {
-  return (
-    <div class="ProceedDiv">
-      ProceedDiv
     </div>
   );
 }
