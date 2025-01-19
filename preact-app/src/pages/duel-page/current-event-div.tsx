@@ -30,7 +30,6 @@ interface ComponentInQueue {
 
 interface CurrentEventDivState {
   childComponentsQueue: ComponentInQueue[];
-  isDequeuPending: boolean;
 }
 
 class CurrentEventDiv extends Component<CurrentEventDivProps, CurrentEventDivState> {
@@ -39,12 +38,12 @@ class CurrentEventDiv extends Component<CurrentEventDivProps, CurrentEventDivSta
     super(props);
     this.state = {
       childComponentsQueue: [],
-      isDequeuPending: false,
     };
     this.onPhaseChange = this.onPhaseChange.bind(this);
     this.queueChildComponentAndEnsureDequeue =
       this.queueChildComponentAndEnsureDequeue.bind(this);
-    this.dequeueChildComponents = this.dequeueChildComponents.bind(this);
+    this.resumeDequeuingChildComponents =
+      this.resumeDequeuingChildComponents.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +52,13 @@ class CurrentEventDiv extends Component<CurrentEventDivProps, CurrentEventDivSta
       this.onPhaseChange,
     );
     this.onPhaseChange(this.props.duel.currentPhase);
+  }
+
+  componentWillUnmount(): void {
+    unregisterOnChangeListener(
+      'gameState.currentDuel.currentPhase',
+      this.onPhaseChange,
+    );
   }
 
   onPhaseChange(newPhase: Phase): void {
@@ -90,33 +96,48 @@ class CurrentEventDiv extends Component<CurrentEventDivProps, CurrentEventDivSta
         break;
     }
     const childComponent = <ParagraphDiv paragraph={paragraph} />;
-    this.queueChildComponentAndEnsureDequeue(childComponent, 3500);
+    this.queueChildComponentAndEnsureDequeue(childComponent, 2500);
   }
 
   queueChildComponentAndEnsureDequeue(
     component: JSX.Element, millisecondsOnDisplay: number,
   ): void {
-    const { childComponentsQueue, isDequeuPending } = this.state;
-    childComponentsQueue.push({ component, millisecondsOnDisplay });
-    this.setState({ childComponentsQueue }, () => {
-      if (!isDequeuPending) {
-        setTimeout(this.dequeueChildComponents, millisecondsOnDisplay);
-      }
-    });
-  }
-
-  dequeueChildComponents(): void {
     const { childComponentsQueue } = this.state;
-    // Dequeue the first element in the queue.
-    childComponentsQueue.shift();
-    const isDoneDequeuing = childComponentsQueue.length === 0;
-    this.setState({ childComponentsQueue, isDequeuPending: !isDoneDequeuing });
+    childComponentsQueue.push({ component, millisecondsOnDisplay });
+    this.setState(
+      { childComponentsQueue },
+      () => {
+        // If this component is the first element in the queue, then
+        // it means there's no dequeueing currently in progress.
+        // This also ensures that when multiple events are queued at the same time,
+        // only the first event will resume dequeuing.
+        const firstChildComponent = childComponentsQueue[0].component;
+        const shouldDequeuingResumeHere = firstChildComponent === component;
+        if (shouldDequeuingResumeHere) {
+          this.resumeDequeuingChildComponents();
+        }
+      },
+    );
   }
 
-  componentWillUnmount(): void {
-    unregisterOnChangeListener(
-      'gameState.currentDuel.currentPhase',
-      this.onPhaseChange,
+  resumeDequeuingChildComponents(): void {
+    const { childComponentsQueue } = this.state;
+    const firstChild = childComponentsQueue[0];
+    setTimeout(
+      () => {
+        // Dequeue the first element in the queue.
+        childComponentsQueue.shift();
+        const shouldKeepDequeuing = childComponentsQueue.length > 0;
+        this.setState(
+          { childComponentsQueue },
+          () => {
+            if (shouldKeepDequeuing) {
+              this.resumeDequeuingChildComponents();
+            }
+          }
+        );
+      },
+      firstChild.millisecondsOnDisplay,
     );
   }
 
