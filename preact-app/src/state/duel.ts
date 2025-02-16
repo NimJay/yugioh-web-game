@@ -19,10 +19,11 @@ interface Player {
   name: string; // If this is "User", then it's the user.
   lifePoints: number;
   deck: Card[];
+  extraDeck: Card[]; // Fusion cards, etc.
   hand: Card[];
   monsterZones: Zone[];
   spellTrapZones: Zone[];
-  fieldZone: Zone;
+  fieldCard?: Card;
   graveyard: Card[];
   banished: Card[];
   number: 1 | 2;
@@ -50,10 +51,10 @@ class Duel {
       name: p1Name,
       lifePoints: 4000,
       deck: p1Deck,
+      extraDeck: [], // TODO: Add parameter to createNewDuel()
       hand: [],
       monsterZones: duel.createZones(5),
       spellTrapZones: duel.createZones(5),
-      fieldZone: duel.createZones(5)[0],
       graveyard: [],
       banished: [],
       number: 1,
@@ -62,10 +63,10 @@ class Duel {
       name: p2Name,
       lifePoints: 4000,
       deck: p2Deck,
+      extraDeck: [], // TODO: Add parameter to createNewDuel()
       hand: [],
       monsterZones: duel.createZones(5),
       spellTrapZones: duel.createZones(5),
-      fieldZone: duel.createZones(5)[0],
       graveyard: [],
       banished: [],
       number: 2,
@@ -215,6 +216,29 @@ class Duel {
     return this.currentPhase;
   }
 
+  /**
+   * Check if a given card can be summoned right now.
+   */
+  public canSummonCard(card: Card): boolean {
+    // TODO: Eventually check for card effects preventing summoning
+    const hasAvailableMonsterZone = this.p1.monsterZones.some(zone => !zone.card);
+    const isMonster = [
+      'Normal Monster', 'Effect Monster', 'Flip Effect Monster',
+    ].includes(card.type)
+    if (card.level > 4) {
+      // TODO: Support summoning of high-level monsters by checking field
+      return false;
+    }
+    return isMonster
+      && this.currentTurnPlayer === this.p1
+      && hasAvailableMonsterZone
+      && [Phase.MAIN_1, Phase.MAIN_2].includes(this.currentPhase);
+  }
+
+  public canSetMonsterCard(card: Card): boolean {
+    return this.canSummonCard(card);
+  }
+
 }
 
-export { Duel, Phase };
+export { Duel, Phase, Zone };
