@@ -35,8 +35,3 @@
 .DuelFooterDiv .ProceedDiv {
   width: 25%;
 }
-
-.PlaymatsDiv {
-  /* So that we can center the <CurrentEventDiv> */
-  position: relative;
-}

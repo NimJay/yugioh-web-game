@@ -1,0 +1,157 @@
+.PlaymatsDiv {
+  /* So that we can center the <CurrentEventDiv> */
+  position: relative;
+}
+
+.PlaymatRowsDiv {
+  text-align: center;
+}
+
+.PlaymatRowDiv {
+  display: inline-block;
+  margin: auto;
+}
+
+/*
+Useful background colours if you're playing around with PlaymatRowDiv widths.
+.PlaymatRowDiv:nth-child(1) {
+  background-color: antiquewhite;
+}
+.PlaymatRowDiv:nth-child(2) {
+  background-color: coral;
+}
+.PlaymatRowDiv:nth-child(3) {
+  background-color: lightblue;
+}
+.PlaymatRowDiv:nth-child(4) {
+  background-color: lightgreen;
+}
+*/
+
+.PlaymatZoneDiv img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.PlaymatZoneDiv {
+  display: inline-block;
+  width: 210px;
+  aspect-ratio: 1/1;
+  text-align: center;
+  vertical-align: bottom;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+/*
+The purpose of these max-width queries is to make sure that all zones are fully visible regardless of width.
+The max-width and width values were determined by assuming that we have infinite height.
+When testing these max-width queries, use the "Responsive" screen option in the browser's developer tools and set the height to something really high.
+To deal with limited height issues, we have another set of @media queries in the section below.
+*/
+@media screen and (max-width: 2000px) {
+  .PlaymatZoneDiv {
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .PlaymatZoneDiv {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .PlaymatZoneDiv {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .PlaymatZoneDiv {
+    width: 85px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .PlaymatZoneDiv {
+    width: 75px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .PlaymatZoneDiv {
+    width: 65px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .PlaymatZoneDiv {
+    width: 55px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .PlaymatZoneDiv {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .PlaymatZoneDiv {
+    width: 40px;
+  }
+}
+
+/*
+This is analogous to the "max-width" queries above.
+But these rules are to deal with limited height.
+When testing, use the "Responsive" screen option in the browser's developer tools and set the width to something really high.
+*/
+@media screen and (max-height: 1600px) {
+  .PlaymatZoneDiv {
+    max-width: 170px;
+  }
+}
+
+@media screen and (max-height: 1250px) {
+  .PlaymatZoneDiv {
+    max-width: 135px;
+  }
+}
+
+@media screen and (max-height: 1000px) {
+  .PlaymatZoneDiv {
+    max-width: 110px;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .PlaymatZoneDiv {
+    max-width: 90px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .PlaymatZoneDiv {
+    max-width: 75px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .PlaymatZoneDiv {
+    max-width: 65px;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .PlaymatZoneDiv {
+    max-width: 55px;
+  }
+}
+
+@media screen and (max-height: 475px) {
+  .PlaymatZoneDiv {
+    max-width: 50px;
+  }
+}

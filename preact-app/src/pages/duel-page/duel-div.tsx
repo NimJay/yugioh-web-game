@@ -7,10 +7,10 @@ import { Component } from "preact";
 import "./duel-div.css";
 import { CurrentCardDiv } from "../../shared/current-card-div/current-card-div";
 import { Card } from "../../state/card";
-import { CurrentEventDiv } from "./current-event-div";
 import { Duel } from "../../state/duel";
 import { HandDiv } from "./hand-div";
 import { ProceedDiv } from "./proceed-div";
+import { PlaymatsDiv } from "./playmats-div";
 
 interface DuelDivProps {
   duel: Duel;
@@ -52,7 +52,9 @@ class DuelDiv extends Component<DuelDivProps, DuelDivState> {
       <div class="DuelDiv">
         <DuelHeaderDiv />
         <div class="DuelMiddleDiv">
-          <PlaymatsDiv duel={duel} />
+          <PlaymatsDiv
+            duel={duel}
+            onMouseEnterCard={this.onSetCurrentCard} />
           <CurrentCardDiv card={currentCard} />
         </div>
         <div class="DuelFooterDiv">
@@ -70,16 +72,6 @@ function DuelHeaderDiv() {
   return (
     <div class="DuelHeaderDiv">
       DuelHeader
-    </div>
-  );
-}
-
-function PlaymatsDiv(props: { duel: Duel }) {
-  const { duel } = props;
-  return (
-    <div class="PlaymatsDiv">
-      PlaymatsDiv
-      <CurrentEventDiv duel={duel} />
     </div>
   );
 }
