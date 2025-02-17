@@ -1,0 +1,53 @@
+.OpponentHandDiv {
+  height: 100%;
+  max-height: 100%;
+  text-align: center;
+}
+
+.OpponentHandDiv ol {
+  height: 100%;
+  margin: 0 auto;
+}
+
+.OpponentHandDiv li {
+  display: inline-block;
+  padding: 15px;
+  height: 100%;
+}
+
+.OpponentHandDiv li div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.OpponentHandDiv img {
+  max-height: 85%;
+}
+
+@media screen and (max-width: 1200px) {
+  .OpponentHandDiv li {
+    padding: 10px;
+  }
+
+  .OpponentHandDiv img {
+    max-height: 70%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .OpponentHandDiv li {
+    padding: 5px;
+  }
+
+  .OpponentHandDiv img {
+    max-height: 50%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .OpponentHandDiv img {
+    max-height: 35%;
+  }
+}

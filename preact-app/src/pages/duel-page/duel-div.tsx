@@ -11,6 +11,7 @@ import { Duel } from "../../state/duel";
 import { HandDiv } from "./hand-div";
 import { ProceedDiv } from "./proceed-div";
 import { PlaymatsDiv } from "./playmats-div";
+import { OpponentHandDiv } from "./opponent-hand-div";
 
 interface DuelDivProps {
   duel: Duel;
@@ -50,7 +51,7 @@ class DuelDiv extends Component<DuelDivProps, DuelDivState> {
     }
     return (
       <div class="DuelDiv">
-        <DuelHeaderDiv />
+        <DuelHeaderDiv duel={duel} />
         <div class="DuelMiddleDiv">
           <PlaymatsDiv
             duel={duel}
@@ -68,10 +69,11 @@ class DuelDiv extends Component<DuelDivProps, DuelDivState> {
   }
 }
 
-function DuelHeaderDiv() {
+function DuelHeaderDiv(props: { duel: Duel }) {
+  const { duel } = props;
   return (
     <div class="DuelHeaderDiv">
-      DuelHeader
+      <OpponentHandDiv duel={duel} />
     </div>
   );
 }
