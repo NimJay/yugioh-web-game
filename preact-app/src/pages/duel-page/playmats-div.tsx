@@ -29,6 +29,20 @@ function PlaymatZoneDiv(props: { zone?: Zone, cards?: Card[], isRotated?: boolea
   );
 }
 
+function DeckPlaymatZoneDiv(props: { isForPlayer1: boolean }) {
+  const { isForPlayer1 } = props;
+  const className = 'PlaymatZoneDiv DeckPlaymatZoneDiv'
+    + (isForPlayer1 ? ' DeckPlaymatZonePlayer1Div' : '');
+  const imgSrc = isForPlayer1
+    ? '/public/card-back.png'
+    : '/public/card-back-rotated-180.png';
+  return (
+    <div className={className}>
+      <img src={imgSrc} />
+    </div>
+  );
+}
+
 class PlaymatsDiv extends Component<PlaymatsDivProps, PlaymatsDivState> {
 
   constructor(props: PlaymatsDivProps) {
@@ -76,7 +90,7 @@ class PlaymatsDiv extends Component<PlaymatsDivProps, PlaymatsDivState> {
         <CurrentEventDiv duel={duel} />
         <div className="PlaymatRowsDiv">
           <div className="PlaymatRowDiv">
-            <PlaymatZoneDiv cards={duel.p2.deck} />
+            <DeckPlaymatZoneDiv isForPlayer1={false} />
             <PlaymatZoneDiv zone={duel.p2.spellTrapZones[4]} />
             <PlaymatZoneDiv zone={duel.p2.spellTrapZones[3]} />
             <PlaymatZoneDiv zone={duel.p2.spellTrapZones[2]} />
@@ -109,7 +123,7 @@ class PlaymatsDiv extends Component<PlaymatsDivProps, PlaymatsDivState> {
             <PlaymatZoneDiv zone={duel.p1.spellTrapZones[2]} />
             <PlaymatZoneDiv zone={duel.p1.spellTrapZones[3]} />
             <PlaymatZoneDiv zone={duel.p1.spellTrapZones[4]} />
-            <PlaymatZoneDiv cards={duel.p1.deck} />
+            <DeckPlaymatZoneDiv isForPlayer1={true} />
           </div>
         </div>
       </div>

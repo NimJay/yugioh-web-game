@@ -43,6 +43,16 @@ Useful background colours if you're playing around with PlaymatRowDiv widths.
   border: solid 1px rgba(0, 0, 0, 0.2);
 }
 
+.DeckPlaymatZoneDiv img {
+  border-right: solid 2px rgb(150, 150, 150);
+  border-bottom: solid 4px rgb(150, 150, 150);
+}
+
+.DeckPlaymatZonePlayer1Div img {
+  border-right: none;
+  border-left: solid 2px rgb(150, 150, 150);
+}
+
 /*
 The purpose of these max-width queries is to make sure that all zones are fully visible regardless of width.
 The max-width and width values were determined by assuming that we have infinite height.
