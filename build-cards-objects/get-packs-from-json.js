@@ -1,6 +1,3 @@
-// Caution: The packs.ts file inside preact-app/ has been manually edited.
-// We manually added the "price" field to each pack.
-
 const fs = require('fs');
 const path = require('path');
 
@@ -24,6 +21,9 @@ const CARD_ID_CONVERSIONS = [
   { from: '31887905', to: '31887906' },
   { from: '68881649', to: '68881650' },
   { from: '89943723', to: '89943724' },
+  { from: '64335804', to: '64335805' },
+  { from: '68540058', to: '68540059' },
+  { from: '18144506', to: '18144507' },
 ];
 
 function convertIdsInPack(pack) {
@@ -51,6 +51,7 @@ function getPacksFromJson() {
       name: rawPack['name'].join(' '),
       releaseYear: parseInt(rawPack['release']),
       numOfCards: rawPack['#cards'],
+      price: 20.00, // TODO: Consider varying prices
       commonCardIds: rawPack.Common || [],
       rareCardIds: rawPack.Rare || [],
       superRareCardIds: rawPack['Super Rare'] || [],
@@ -63,9 +64,20 @@ function getPacksFromJson() {
   return packs;
 }
 
+function removePackWithName(packs, name) {
+  return packs.filter(pack => pack.name !== name);
+}
+
 // Synchro cards were released in 2008 🤮
 function getPacksBefore2008() {
-  const packs = getPacksFromJson();
+  let packs = getPacksFromJson();
+  // Even though these two packs are from 2007,
+  // they contain cards with 2008 OCG (Official Card Game) release dates.
+  // We would face a similar issues with a different set of packs if
+  // we used TCG (Trading Card Game) release dates.
+  // OCG = Japan/Asia, TCG = North America/Europe/other
+  packs = removePackWithName(packs, "Gladiator's Assault");
+  packs = removePackWithName(packs, "Tactical Evolution");
   return packs.filter(pack => pack.releaseYear < 2008);
 }
 
