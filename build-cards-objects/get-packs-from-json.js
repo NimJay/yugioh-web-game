@@ -1,5 +1,43 @@
+// Caution: The packs.ts file inside preact-app/ has been manually edited.
+// We manually added the "price" field to each pack.
+
 const fs = require('fs');
 const path = require('path');
+
+// Because some cards have multiple art variations, the packs.jsonc file
+// sometimes uses IDs that are not in the cards.csv file.
+// Example: 46986415 & 46986415 are both Dark Magician, but with different illustrations.
+const CARD_ID_CONVERSIONS = [
+  { from: '89631140', to: '89631139' },
+  { from: '46986415', to: '46986421' },
+  { from: '74677422', to: '74677427' },
+  { from: '27911550', to: '27911549' },
+  { from: '84080938', to: '84080939' },
+  { from: '81172177', to: '81172176' },
+  { from: '83555667', to: '83555666' },
+  { from: '80193356', to: '80193355' },
+  { from: '98502115', to: '98502113' },
+  { from: '90740330', to: '90740329' },
+  { from: '14878871', to: '14878872' },
+  { from: '4376658', to: '4376659' },
+  { from: '31764353', to: '31764354' },
+  { from: '31887905', to: '31887906' },
+  { from: '68881649', to: '68881650' },
+  { from: '89943723', to: '89943724' },
+];
+
+function convertIdsInPack(pack) {
+  pack.commonCardIds = pack.commonCardIds.map(convertId);
+  pack.rareCardIds = pack.rareCardIds.map(convertId);
+  pack.superRareCardIds = pack.superRareCardIds.map(convertId);
+  pack.ultraRareCardIds = pack.ultraRareCardIds.map(convertId);
+  pack.secretRareCardIds = pack.secretRareCardIds.map(convertId);
+}
+
+function convertId(cardId) {
+  const conversion = CARD_ID_CONVERSIONS.find(conversion => conversion.from === cardId);
+  return conversion ? conversion.to : cardId;
+}
 
 function getPacksFromJson() {
   const jsonFilePath = path.resolve(__dirname, 'packs.jsonc');
@@ -19,6 +57,7 @@ function getPacksFromJson() {
       ultraRareCardIds: rawPack['Ultra Rare'] || [],
       secretRareCardIds: rawPack['Secret Rare'] || [],
     }
+    convertIdsInPack(pack);
     packs.push(pack);
   }
   return packs;
